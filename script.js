@@ -1,26 +1,24 @@
 function getComputerChoice() {
    let choice = Math.floor(Math.random() * 3);
-   let choiceInWords;
+   let computerSelection;
 
    switch (choice){
       case 0:
-         choiceInWords = "Rock";
+         computerSelection = "Rock";
          break;
       case 1:
-         choiceInWords = "Paper";
+         computerSelection = "Paper";
          break;
       case 2:
-         choiceInWords = "Scissors";
+         computerSelection = "Scissors";
          break;
    }
 
-   return choiceInWords;
+   return computerSelection;
 }
 
-let playerSelection;
-
 function getPlayerChoice() {
-   playerSelection = prompt("Rock, paper or scissors?", "Rock");
+   let playerSelection = prompt("Rock, paper or scissors?", "Rock");
    playerSelection = playerSelection.toLowerCase()
    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
 
@@ -32,9 +30,9 @@ function getPlayerChoice() {
    return playerSelection
 }
 
+computerSelection = getComputerChoice();
 playerSelection = getPlayerChoice()
 
-let computerSelection = getComputerChoice();
 
 function playRound(playerSelection, computerSelection) {
    let result;
