@@ -1,6 +1,9 @@
+let playerSelection;
+let computerSelection;
+let result;
+
 function getComputerChoice() {
    let choice = Math.floor(Math.random() * 3);
-   let computerSelection;
 
    switch (choice){
       case 0:
@@ -17,8 +20,10 @@ function getComputerChoice() {
    return computerSelection;
 }
 
+
 function getPlayerChoice() {
-   let playerSelection = prompt("Rock, paper or scissors?", "Rock");
+   playerSelection = prompt("Rock, paper or scissors?", "Rock");
+
    playerSelection = playerSelection.toLowerCase()
    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)
 
@@ -30,12 +35,10 @@ function getPlayerChoice() {
    return playerSelection
 }
 
-computerSelection = getComputerChoice();
-playerSelection = getPlayerChoice()
-
-
 function playRound(playerSelection, computerSelection) {
-   let result;
+   playerSelection = getPlayerChoice()
+   computerSelection = getComputerChoice();
+
    if (playerSelection == computerSelection) {
       result = "Draw";
    } else if (playerSelection == "Rock" && computerSelection == "Paper") {
@@ -54,4 +57,29 @@ function playRound(playerSelection, computerSelection) {
    return result;
 }
 
-console.log(playRound(playerSelection, computerSelection))
+function game() {
+   let computerScore = 0;
+   let playerScore = 0;
+   
+   for (i = 0; i < 5; i++) {
+      playRound(playerSelection, computerSelection)
+      if (result.charAt(4) == "w") {
+         playerScore++
+      } else if (result.charAt(4) == "l"){
+         computerScore++
+      } else {
+   
+      }
+      console.log(result + ". The score is: you " + playerScore + ", computer " + computerScore)
+   }
+   console.log("THE FINAL SCORE IS: you " + playerScore + ", computer " + computerScore)
+   if (playerScore > computerScore) {
+      console.log("You won the game")
+   } else if (playerScore < computerScore){
+      console.log("You lost the game")
+   } else {
+      console.log("It's a draw")
+   }
+}
+
+game()
